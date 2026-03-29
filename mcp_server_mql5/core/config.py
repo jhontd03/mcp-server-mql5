@@ -14,8 +14,8 @@ used throughout the application. It sets up structured JSON logging and file rot
 
 # ==================== CONSTANTS ====================
 
-LOG_DIR = Path("logs")
-LOG_DIR.mkdir(exist_ok=True)
+LOG_DIR = Path.home() / ".mcp_server_mql5" / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 MQL5_SEARCH_API = "https://search.mql5.com/api/query"
 # Keeping as fallback if needed, but primary is now API
