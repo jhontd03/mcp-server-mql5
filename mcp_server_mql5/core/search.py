@@ -50,8 +50,19 @@ class MQL5Searcher:
             if not candidates:
                 return None
 
-            # 2. Take the first relevant result
-            best_match = candidates[0]
+            # 2. Prefer candidates whose title contains the exact search term
+            best_match = None
+            search_lower = search_term.lower()
+            
+            for c in candidates:
+                title = c.get("info", {}).get("title", "").lower()
+                # Prioritize if the function/term exactly drops in the title
+                if search_lower in title:
+                    best_match = c
+                    break
+            
+            if not best_match:
+                best_match = candidates[0]
 
             # Extract URL
             info = best_match.get("info", {})
