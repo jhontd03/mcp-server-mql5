@@ -1,7 +1,7 @@
 [project]
 name = "mcp-server-mql5"
 version = "0.1.2"
-description = "A MCP server for MQL5 development: Compiles code locally via MetaEditor and searches official docs."
+description = "A MCP server for MQL5 development."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
