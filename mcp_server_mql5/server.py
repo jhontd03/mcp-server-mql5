@@ -6,6 +6,8 @@ and handles dependency injection and caching.
 """
 
 import hashlib
+import io
+import sys
 from functools import lru_cache
 
 from mcp.server.fastmcp import FastMCP
@@ -130,6 +132,10 @@ async def search_mql5_docs(search_term: str, max_chars: int = 4000) -> str:
 
 
 def main() -> None:
+    if sys.platform == "win32":
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_buffering=True)
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", line_buffering=True)
+
     logger.info("Server starting")
     try:
         mcp.run()
